@@ -1,83 +1,81 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Responsive Navbar</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
         * {
             margin: 0;
-            font-family: "Poppins";
-            box-sizing: border-box;
             padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
         }
 
         .bar {
             background-color: rgb(7, 7, 7);
             color: aliceblue;
             height: 80px;
+            display: flex;
             align-items: center;
             justify-content: space-between;
-            display: flex;
+            padding: 0 20px;
         }
 
         .bar div {
-            margin-left: 20px;
+            font-size: 35px;
+            font-weight: 700;
         }
 
-        .active,
-        a:hover {
-            background-color: rgb(248, 245, 245);
-            color: rgb(4, 4, 4);
-            cursor: grab;
-        }
-
-        a {
-            border-radius: 5px;
-            padding: 8px;
-            margin-left: 24px;
-            color: aliceblue;
-            background-color: black;
-            transition: all 0.3s ease;
-            text-decoration: none;
-
+        nav ul {
+            display: flex;
+            gap: 24px;
         }
 
         li {
             list-style: none;
         }
 
-        nav ul {
-            justify-content: space-between;
-            display: flex;
-
+        a {
+            color: aliceblue;
+            text-decoration: none;
+            padding: 8px;
+            border-radius: 5px;
+            transition: 0.3s;
         }
 
-        .bar .menu-btn i {
+        a:hover,
+        .active {
+            background-color: none;
+            color:cyan;
+        }
+
+        .menu-btn {
             display: none;
+            cursor: pointer;
         }
 
-        @media(max-width:940px) {
-            .bar .menu-btn i {
-                display: block;
+        @media (max-width: 940px) {
+            .menu-btn {
+                display: flex;
+                align-items: center;
             }
 
             nav ul {
                 position: fixed;
-                /*view point k hissab se*/
-                /*absoute,relative,sticky,static*/
                 top: 80px;
                 left: -100%;
-                background-color: black;
-                height: 100vh;
                 width: 100%;
-                text-align: center;
-                display: block;
+                height: calc(100vh - 80px);
+                background: black;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 40px;
                 transition: all 0.5s ease;
             }
 
@@ -85,31 +83,22 @@
                 left: 0;
             }
 
-            li {
-                width: 100%;
-                margin: 40px 0;
-                padding-right: 40px;
-                background-color: none;
-            }
-
-            a {
+            .menu-btn .menu-icon {
                 display: block;
-                font-size: 20px;
+                font-size:28px;
             }
 
-            nav.menu-btn i {
-                color: aliceblue;
+            .menu-btn .close-icon {
+                display: none;
             }
 
-            li a:hover,
-            .active {
-                background-color: black;
-                color: cyan;
-
+            #click:checked~.menu-btn .menu-icon {
+                display: none;
             }
 
-            nav .menu-btn i {
-                display: block
+            #click:checked~.menu-btn .close-icon {
+                display: block;
+                font-size:28px;
             }
         }
     </style>
@@ -117,10 +106,12 @@
 
 <body>
     <nav class="bar">
-        <div style="font-size:35px; font-weight: 700; text-align: center;">BRAND</div>
-
+        <div>BRAND</div>
         <input type="checkbox" id="click" style="display: none;">
-        <label for="click" class="menu-btn"><i class='bx bx-menu'></i></label>
+        <label for="click" class="menu-btn">
+            <i class='bx bx-menu menu-icon'></i>
+            <i class='bx bx-x close-icon'></i>
+        </label>
         <ul>
             <li><a href="#" class="active">Home</a></li>
             <li><a href="#">About</a></li>
@@ -129,6 +120,9 @@
             <li><a href="#">Feedback</a></li>
         </ul>
     </nav>
+</body>
+
+</html>
 
 </body>
 
