@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            margin: 0;
+            font-family: "Poppins";
+            box-sizing: border-box;
+            padding: 0;
+        }
+
+        .bar {
+            background-color: rgb(7, 7, 7);
+            color: aliceblue;
+            height: 80px;
+            align-items: center;
+            justify-content: space-between;
+            display: flex;
+        }
+
+        .active , a:hover {
+            background-color: rgb(248, 245, 245);
+            color: rgb(4, 4, 4);
+            cursor: grab;
+        }
+
+        a {
+            border-radius: 5px;
+            padding: 8px;
+            margin-left: 24px;
+            color: aliceblue;
+            background-color: black;
+            transition: all 0.3s ease;
+            text-decoration: none;
+
+        }
+        
+        li{
+            list-style: none;
+        }
+        nav ul {
+            justify-content: space-between;
+            display: flex;
+            
+        }
+
+       @media(max-width:940px) {
+            
+            nav ul {
+                position: fixed;    /*view point k hissab se*/  /*absoute,relative,sticky,static*/
+                top: 80px;
+                left:-100%;
+                background-color: black;
+                height: 100vh;
+                width: 100%;
+                text-align: center;
+                display: block ;
+                transition: all 0.5s ease;
+            }
+            #click:checked~ul{
+                left:0;
+            }
+            li{
+                width:100%;
+                margin: 40px 0;
+                padding-right:40px;
+                background-color: none;
+            }
+            a{
+                display: block;
+                font-size: 20px;
+            }
+            nav.menu-btn i{
+                color:aliceblue;
+            }
+            li a:hover,.active{
+                background-color:black ;
+                color:cyan ;
+                
+            }
+            nav .menu-btn i{
+                display:block
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="bar">
+        <div style="font-size:35px; font-weight: 700; text-align: center;">BRAND</div>
+
+        <input type="checkbox" id="click">
+        <label for="click" class="menu-btn"><i class='bx bx-menu'></i></label>
+        <ul>
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Service</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Feedback</a></li>
+        </ul>
+    </nav>
+</body>
+
+</html>
